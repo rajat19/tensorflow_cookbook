@@ -1,17 +1,6 @@
-<img src="https://github.com/nfmcclure/tensorflow_cookbook/raw/master/images/book_covers.jpg" data-canonical-src="https://github.com/nfmcclure/tensorflow_cookbook/raw/master/images/book_covers.jpg" width="400" height="250" />
-
-# [TensorFlow Machine Learning Cookbook](https://www.packtpub.com/big-data-and-business-intelligence/tensorflow-machine-learning-cookbook)
-
-## [A Packt Publishing Book](https://www.packtpub.com/big-data-and-business-intelligence/tensorflow-machine-learning-cookbook)
-
-### By Nick McClure
-
-=================
-
-Build: [![Build Status](https://travis-ci.org/nfmcclure/tensorflow_cookbook.svg?branch=master)](https://travis-ci.org/nfmcclure/tensorflow_cookbook)
-
-=================
-
+# Tensorflow cookbook
+This cookbook uses tf 2.0 and is an updated version of tensorflow_cookbook at
+[Tensorflow Cookbook](https://github.com/nfmcclure/tensorflow_cookbook) which used tf 1.0.
 
 Table of Contents
 =================

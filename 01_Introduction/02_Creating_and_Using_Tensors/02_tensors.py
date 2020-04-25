@@ -10,32 +10,31 @@ ops.reset_default_graph()
 
 # Introduce tensors in tf
 
-# Get graph handle
-sess = tf.Session()
-
 my_tensor = tf.zeros([1,20])
+print(my_tensor)
 
 # Declare a variable
 my_var = tf.Variable(tf.zeros([1,20]))
+print(my_var)
 
 # Different kinds of variables
 row_dim = 2
-col_dim = 3 
+col_dim = 3
 
 # Zero initialized variable
 zero_var = tf.Variable(tf.zeros([row_dim, col_dim]))
+print(zero_var)
 
 # One initialized variable
 ones_var = tf.Variable(tf.ones([row_dim, col_dim]))
+print(ones_var)
 
 # shaped like other variable
-sess.run(zero_var.initializer)
-sess.run(ones_var.initializer)
 zero_similar = tf.Variable(tf.zeros_like(zero_var))
-ones_similar = tf.Variable(tf.ones_like(ones_var))
+print(zero_similar)
 
-sess.run(ones_similar.initializer)
-sess.run(zero_similar.initializer)
+ones_similar = tf.Variable(tf.ones_like(ones_var))
+print(ones_similar)
 
 # Fill shape with a constant
 fill_var = tf.Variable(tf.fill([row_dim, col_dim], -1))
@@ -52,17 +51,21 @@ sequence_var = tf.Variable(tf.range(start=6, limit=15, delta=3)) # Generates [6,
 
 # Random Numbers
 
-# Random Normal
-rnorm_var = tf.random_normal([row_dim, col_dim], mean=0.0, stddev=1.0)
+# Random
+rnorm_var = tf.random.normal([row_dim, col_dim], mean=0.0, stddev=1.0)
+runif_var = tf.random.uniform([row_dim, col_dim], minval=0, maxval=4)
 
-# Add summaries to tensorboard
-merged = tf.summary.merge_all()
+print(rnorm_var)
+print(runif_var)
+
+# Create variable
+my_var = tf.Variable(tf.zeros([1,20]))
 
 # Initialize graph writer:
-writer = tf.summary.FileWriter("/tmp/variable_logs", graph=sess.graph)
+writer = tf.summary.create_file_writer("/tmp/variable_logs")
 
-# Initialize operation
-initialize_op = tf.global_variables_initializer()
-
-# Run initialization of variable
-sess.run(initialize_op)
+with writer.as_default():
+    for step in range(100):
+        # other model code would go here
+        tf.summary.scalar("my_metric", 0.5, step=step)
+        writer.flush()
